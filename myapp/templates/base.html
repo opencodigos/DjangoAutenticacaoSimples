@@ -15,15 +15,13 @@
 </head>
 <body>  
 	
-	{% include 'navbar.html' %}
- 
+	{% include 'navbar.html' %} 
 	
-	<div class="container"> 
-	 
+	<div class="container">   
 		{% if user.is_authenticated %}
 			<h1>Olá, {{user.username}}</h1>  
 		{% endif %} 
-			 
+		
 		{% block content %}{% endblock %} 
 	</div>
 
