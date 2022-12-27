@@ -62,20 +62,35 @@ python manage.py startapp accounts
 
 Agora precisamos registrar nossa aplicação. Tem que ser registrado em primeiro. Senão o Django busca o template padrão e não o que vamos criar.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/47f40e9b-48c9-43d2-a783-1e9d04633f1c/Untitled.png)
+``` 
+INSTALLED_APPS = [ 
+    'accounts',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+     
+    'myapp',
+]
+``` 
 
 Dentro desse app criar uma pasta “**templates/registration**”
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/75526d3f-6f90-4750-9888-f2b10336b278/Untitled.png)
+- login.html
+- password_reset_complete.html
+- password_reset_confirm.html
+- password_reset_done.html
+- password_reset_form.html
+- register.html
 
 Criar todos esses templates. Tem que ser exatamente esses nomes.
 
 Se vocês acessar a views que chama esses templates padrão do django.
 `from django.contrib.auth import views`
 
-Verifica que na documentação a view está chamando **template_name.**
-
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e2403604-47ea-4144-b3e9-fe21f139a6e7/Untitled.png)
+Verifica que na documentação a view está chamando **template_name.** 
 
 São exatamente esses nomes. E para aproveitar essa views que já existe do próprio Django vamos apenas apontar o template nosso.
 
@@ -414,8 +429,6 @@ Estou em um projeto teste então eu adicionei esses botões
     
     </nav>
     ```
-</details>   
-
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3e66ec40-ac7a-440c-88d0-a017451d0d57/Untitled.png)
+</details>    
 
 **Esse é um jeito simples**. Se você precisa de algo Customizável ai pode ser utilizado o exemplo completo que tem na documentação do Django. De criar as views, forms, customizar os fields.
