@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg border-bottom">
+
+    <div class="container-fluid">
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
+            aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <a class="navbar-brand" href="#">Myapp</a>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">Inicio</a>
+                </li> 
+
+                <li class="nav-item">
+                    <a class="nav-link disabled">Desativado</a>
+                </li>
+
+            </ul>
+
+            <div class="d-flex gap-3 align-items-center">
+                {% if user.is_authenticated %}
+                    <span class="nav-text">
+                        {{user.username}}
+                    </span>
+                    <a class="btn btn-outline-danger" href="{% url 'logout' %}">Sair</a>
+                {% else %}
+                    <a class="btn btn-outline-primary" href="{% url 'login' %}">Entrar</a>
+                    <a class="btn btn-success" href="{% url 'register' %}">Registrar</a>
+                {% endif %} 
+
+            </div>
+           
+        </div>
+
+    </div>
+
+</nav>
