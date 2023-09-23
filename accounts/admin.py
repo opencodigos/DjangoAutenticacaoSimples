@@ -1,11 +1,18 @@
 from django.contrib.auth.models import User
 from django.contrib.auth import forms
+from django.contrib import admin
 
-# Register your models here.
+from accounts.models import CustomUser 
+ 
+# admin
+admin.site.register(CustomUser)
+
+
+# forms
 class CustomUserCreationForm(forms.UserCreationForm):
     class Meta(forms.UserCreationForm.Meta):
-        model = User
-        fields = forms.UserCreationForm.Meta.fields + ('email','first_name','last_name',)
+        model = CustomUser
+        fields = forms.UserCreationForm.Meta.fields + ('email','first_name','last_name','cpf',)
         
     def __init__(self, *args, **kwargs): # Adiciona 
         super().__init__(*args, **kwargs)  

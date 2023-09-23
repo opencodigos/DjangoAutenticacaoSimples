@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+
+<div class="col-md-4">
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label class="form-label" for="id_cpf">CPF:</label>
+            <div class="d-flex"> 
+                <input type="text" name="cpf" class="form-control">
+                <button class="btn btn-success" id="cpf_ok" hidden>OK</button>
+            </div>  
+        </div>
+        
+        <div class="mb-3">
+            <label class="form-label" for="id_password">Senha:</label>
+            <input type="password" name="password" class="form-control">
+        </div>
+
+        <button class="btn btn-warning" type="submit">Entrar</button>
+    </form>
+    
+    <a href="{% url 'password_reset' %}">Esqueci minha senha</a>
+</div>
+
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    $(document).ready(function () {
+        var cpfInput = $('input[name="cpf"]');
+        var cpfOkButton = $('#cpf_ok');
+
+        cpfInput.mask('000.000.000-00', {reverse: true});
+
+        cpfInput.keyup('input', function () {
+            var cpfValue = cpfInput.val().replace(/[^0-9]/g, '');
+            console.log(cpfValue)
+            if (cpfValue.length === 11) {
+                cpfOkButton.removeAttr('hidden');
+            } else {
+                cpfOkButton.attr('hidden', 'hidden');
+            }
+        });
+    });
+</script>
+{% endblock scripts %}

@@ -74,6 +74,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
+AUTH_USER_MODEL = 'accounts.CustomUser' 
+
+AUTHENTICATION_BACKENDS = ['accounts.auth_backends.CPFAuth']
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
